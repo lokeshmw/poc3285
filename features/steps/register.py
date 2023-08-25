@@ -1,3 +1,5 @@
+import time
+
 from behave import *
 
 from features.pages.register_page import RegisterPage

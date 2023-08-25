@@ -7,7 +7,6 @@ Feature: Register Account functionality
     When I enter below details into mandatory fields
          |name  |number    |password   |
          |ramesh|6303169446|Loki@12345 |
-         |suresh|6303269446|Loki@12343 |
     And I click on Continue button
     Then Account should get created
 

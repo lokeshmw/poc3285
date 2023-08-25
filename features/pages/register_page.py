@@ -34,7 +34,6 @@ class RegisterPage(BasePage):
     def continue_to_createAccount(self):
         self.click_on_element("continue_id", self.continue_id)
         return RegisterPage(self.driver)
-        time.sleep(200)
 
     def verifying_accountCreation(self, a):
         self.Action_chain("verifying_accountCreation_xpath", self.verifying_accountCreation_xpath)
