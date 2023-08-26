@@ -6,3 +6,4 @@ Feature: add new bank account
     When I click on my account and go to payment options and click on manage bank accounts
     And I enter all the valid details
     Then account added message should be displayed
+

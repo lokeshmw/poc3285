@@ -1,9 +1,10 @@
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 driver = webdriver.Chrome()
-driver.get("https://www.amazon.in/ref=ap_frn_logo")
+driver.get("https://www.amazon.in/ref=nav_logo")
+time.sleep(20)
 driver.maximize_window()
 driver.find_element(By.XPATH, "//a[@data-csa-c-content-id='nav_ya_signin']").click()
 driver.find_element(By.XPATH, "//input[@id='ap_email']").send_keys(8105000676)
@@ -11,12 +12,16 @@ driver.implicitly_wait(10)
 driver.find_element(By.ID, 'continue').click()
 driver.find_element(By.XPATH, "//input[@id='ap_password']").send_keys("Loki@1234")
 driver.find_element(By.ID, "auth-signin-button").click()
-wait = WebDriverWait(driver, 10)
-wait.until(expected_conditions.presence_of_element_located((By.XPATH, "//div[@class='nav-search-field ']/input["
-                                                                      "@aria-label='Search Amazon.in']")))
-driver.find_element(By.XPATH, "//div[@class='nav-search-field ']/input[@aria-label='Search Amazon.in']").send_keys("apple iphone 14 pro max 256 gb gold")
-driver.find_element(By.XPATH, "//input[@id='nav-search-submit-button']").click()
-# a = "Apple iPhone 14 Pro Max (256 GB) - Gold"
-wait.until(expected_conditions.presence_of_element_located((By.XPATH, "//a[.='Apple iPhone 14 Pro Max (256 GB) - Gold']")))
-print(driver.find_element(By.XPATH, "//a[.='Apple iPhone 14 Pro Max (256 GB) - Gold']").text)
-
+driver.find_element(By.XPATH, "//a[contains(.,'Hello, Lokesh.M')]").click()
+driver.find_element(By.XPATH, "//h2[normalize-space()='Your Addresses']").click()
+driver.find_element(By.ID, "ya-myab-plus-address-icon").click()
+driver.find_element(By.XPATH, "//input[@id='address-ui-widgets-enterAddressFullName']").send_keys("lokesh")
+driver.find_element(By.XPATH, "//input[@id='address-ui-widgets-enterAddressPhoneNumber']").send_keys("91810500676")
+driver.find_element(By.XPATH, "//input[@id='address-ui-widgets-enterAddressPostalCode']").send_keys("560041")
+time.sleep(4)
+driver.find_element(By.XPATH, "//input[@id='address-ui-widgets-enterAddressLine1']").send_keys("near minar masjid jaynagar 4th block")
+time.sleep(4)
+driver.find_element(By.XPATH, "//input[@id='address-ui-widgets-enterAddressLine2']").send_keys("marehalli 4th block")
+time.sleep(4)
+driver.find_element(By.XPATH, "//input[@aria-labelledby='address-ui-widgets-form-submit-button-announce']").click()
+time.sleep(16)
