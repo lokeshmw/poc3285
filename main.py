@@ -2,6 +2,7 @@ import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+
 driver = webdriver.Chrome()
 driver.get("https://www.amazon.in/ref=nav_logo")
 time.sleep(20)
@@ -14,14 +15,18 @@ driver.find_element(By.XPATH, "//input[@id='ap_password']").send_keys("Loki@1234
 driver.find_element(By.ID, "auth-signin-button").click()
 driver.find_element(By.XPATH, "//a[contains(.,'Hello, Lokesh.M')]").click()
 driver.find_element(By.XPATH, "//h2[normalize-space()='Your Addresses']").click()
-driver.find_element(By.ID, "ya-myab-plus-address-icon").click()
-driver.find_element(By.XPATH, "//input[@id='address-ui-widgets-enterAddressFullName']").send_keys("lokesh")
-driver.find_element(By.XPATH, "//input[@id='address-ui-widgets-enterAddressPhoneNumber']").send_keys("91810500676")
-driver.find_element(By.XPATH, "//input[@id='address-ui-widgets-enterAddressPostalCode']").send_keys("560041")
-time.sleep(4)
-driver.find_element(By.XPATH, "//input[@id='address-ui-widgets-enterAddressLine1']").send_keys("near minar masjid jaynagar 4th block")
-time.sleep(4)
-driver.find_element(By.XPATH, "//input[@id='address-ui-widgets-enterAddressLine2']").send_keys("marehalli 4th block")
-time.sleep(4)
-driver.find_element(By.XPATH, "//input[@aria-labelledby='address-ui-widgets-form-submit-button-announce']").click()
-time.sleep(16)
+addresses = driver.find_elements(By.XPATH, "//div[@class ='a-row a-spacing-micro']/div/div")
+for x in addresses:
+    phone_name = driver.find_element(By.XPATH, "//div[@class ='a-row a-spacing-micro']/div/div/div/div/div/ul/li[1]")
+    if phone_name.text == "Lokesh.M":
+        driver.find_element(By.XPATH, "//div[@class ='a-row a-spacing-micro']/div/div/span/a[text()='Remove']").click()
+        time.sleep(5)
+        driver.find_element(By.XPATH, "//div[@class ='a-popover-inner']/div[@class='a-section']/div[4]/div[2]/div/div[@class='a-column a-span8']").click()
+        time.sleep(10)
+        print(driver.find_element(By.XPATH, "//h4[.='Address deleted']").text)
+
+        # // div[ @
+        #
+        #
+        # //div [@class ='a-row a-spacing-micro']/div/div/div/div/div/ul/li[1]
+        # // div[@ class ='a-row a-spacing-micro'] / div / div / span / a[text()="Remove"]
