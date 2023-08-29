@@ -3,7 +3,7 @@ from datetime import datetime
 
 from behave import *
 
-from features.pages.add_adress_page import Add_address
+from features.pages.add_address_page import Add_address
 from features.pages.home_page import HomePage
 
 
@@ -39,3 +39,4 @@ def step_impl(context):
     context.add_address.enter_address1("near minar masjid jaynagar 4th block")
     context.add_address.enter_address2("marehalli 4th block")
     context.add_address.click_Add_address()
+    assert context.add_address.verify_text("Address saved")

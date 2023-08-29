@@ -17,6 +17,7 @@ class Add_address(BasePage):
     enter_address1_xpath = "//input[@id='address-ui-widgets-enterAddressLine1']"
     enter_address2_xpath = "//input[@id='address-ui-widgets-enterAddressLine2']"
     click_add_address_xpath = "//input[@aria-labelledby='address-ui-widgets-form-submit-button-announce']"
+    add_address_text_xpath = "//h4[@class='a-alert-heading']"
 
     def click_account(self):
         self.click_on_element("account_xpath", self.account_xpath)
@@ -44,3 +45,6 @@ class Add_address(BasePage):
 
     def click_Add_address(self):
         self.click_on_element("click_add_address_xpath", self.click_add_address_xpath)
+
+    def verify_text(self, a):
+        return self.contains("add_address_text_xpath", self.add_address_text_xpath, a)

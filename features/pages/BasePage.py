@@ -15,6 +15,10 @@ class BasePage:
         element = self.get_element(locator_type, locator_value)
         return element.text.__contains__(a)
 
+    def endswith(self, locator_type, locator_value, a):
+        element = self.get_element(locator_type, locator_value)
+        return element.text.endswith(a)
+
     def text_equal(self, locator_type, locator_value, a):
         element = self.get_element(locator_type, locator_value)
         return element.text.__eq__(a)
